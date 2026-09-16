@@ -1,10 +1,3 @@
-/*
-  Template Name: Rokon - Single Product eCommerce HTML Template
-  Author Name: Hook theme
-  Author URL: https://themeforest.net/user/hooktheme
-  Version: 1.0.0
-*/
-
 "use strict";
 
 // Preloader
@@ -587,9 +580,9 @@ const offcanvasHeader = function () {
   const offcanvasOpen = document.querySelector(
       ".offcanvas__header--menu__open--btn"
     ),
-    offcanvasClose = document.querySelector(".offcanvas__close--btn"),
-    offcanvasHeader = document.querySelector(".offcanvas-header"),
-    offcanvasMenu = document.querySelector(".offcanvas__menu"),
+    offcanvasClose = document.querySelector(".balaji-mobile-menu .offcanvas__close--btn"),
+    offcanvasHeader = document.querySelector(".balaji-mobile-menu"),
+    offcanvasMenu = offcanvasHeader ? offcanvasHeader.querySelector(".offcanvas__menu") : null,
     body = document.querySelector("body");
   /* Offcanvas SubMenu Toggle */
   if (offcanvasMenu) {
@@ -618,6 +611,15 @@ const offcanvasHeader = function () {
         offcanvasHeader.classList.remove("open");
         body.classList.remove("mobile_menu_open");
       }
+    });
+  }
+
+  if (offcanvasMenu) {
+    offcanvasMenu.querySelectorAll(".offcanvas__menu_item").forEach(function (link) {
+      link.addEventListener("click", function () {
+        offcanvasHeader.classList.remove("open");
+        body.classList.remove("mobile_menu_open");
+      });
     });
   }
 
@@ -690,6 +692,23 @@ const offcanvasHeader = function () {
 };
 /* Mobile Menu Active */
 offcanvasHeader();
+
+document.addEventListener("click", function (event) {
+  const menu = document.querySelector(".balaji-mobile-menu");
+  if (!menu) return;
+
+  if (event.target.closest(".offcanvas__header--menu__open--btn")) {
+    event.preventDefault();
+    menu.classList.add("open");
+    document.body.classList.add("mobile_menu_open");
+  }
+
+  if (event.target.closest(".balaji-mobile-menu .offcanvas__close--btn") ||
+      event.target.closest(".balaji-mobile-menu .offcanvas__menu_item")) {
+    menu.classList.remove("open");
+    document.body.classList.remove("mobile_menu_open");
+  }
+});
 
 // Increment & Decrement Qunatity Button
 const quantityWrapper = document.querySelectorAll(".quantity__box");
