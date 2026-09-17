@@ -13542,3 +13542,56 @@ input.quickview__value--number {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* ===== FIX PRODUCT IMAGE WIDTH ON MOBILE ===== */
+@media only screen and (max-width: 767px) {
+
+    .project__card {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .project__card--link {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+    }
+
+    .project__card--thumbnail {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
+
+    .project__card--thumbnail__img,
+    .project__card--thumbnail img.display-block {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+
+        height: auto !important;
+        max-height: none !important;
+
+        display: block !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        object-fit: fill !important;
+        object-position: center !important;
+
+        transform: none !important;
+    }
+
+    .custom-col-2 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+}
