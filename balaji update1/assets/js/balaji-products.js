@@ -479,9 +479,13 @@ function getBalajiProductById(id) {
 function getBalajiProductVariantById(id, variantId) {
   var product = getBalajiProductById(id);
   var priceVariants = {
-    rs5: { price: 5, pack: "₹5 Pack" },
-    rs10: { price: 10, pack: "₹10 Pack" },
-    rs20: { price: 20, pack: "₹20 Pack" }
+    rs5: { price: 5, oldPrice: null, pack: "₹5 Pack" },
+    rs10: { price: 10, oldPrice: null, pack: "₹10 Pack" },
+    rs20: { price: 20, oldPrice: null, pack: "₹20 Pack" },
+    g170: { price: 45, oldPrice: 60, pack: "170 gm" },
+    g350: { price: 85, oldPrice: 110, pack: "350 gm" },
+    g500: { price: 120, oldPrice: 150, pack: "500 gm" },
+    g1kg: { price: 220, oldPrice: 280, pack: "1 kg" }
   };
   var variant = Object.prototype.hasOwnProperty.call(priceVariants, variantId)
     ? priceVariants[variantId]
@@ -489,11 +493,7 @@ function getBalajiProductVariantById(id, variantId) {
 
   if (!product || !variant) return null;
 
-  return Object.assign({}, product, {
-    price: variant.price,
-    oldPrice: null,
-    pack: variant.pack
-  });
+  return Object.assign({}, product, variant);
 }
 
 // Build the WhatsApp "Enquiry Now" link for a given product name

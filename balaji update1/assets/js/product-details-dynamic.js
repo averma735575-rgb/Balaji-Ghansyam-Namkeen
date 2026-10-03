@@ -9,12 +9,20 @@
 
     var params = new URLSearchParams(window.location.search);
     var id = parseInt(params.get("id"), 10);
-    var product = getBalajiProductById(id) || namkeenProducts[0];
+    var product = getBalajiProductById(id);
     var variantId = params.get("variant");
     if (variantId) {
-      product = getBalajiProductVariantById(id, variantId) || product;
+      product = getBalajiProductVariantById(id, variantId);
     }
-    if (!product) return;
+    if (!product) {
+      window.location.replace("404.html");
+      return;
+    }
+
+    var selectedName = params.get("name");
+    if (selectedName) {
+      product = Object.assign({}, product, { name: selectedName });
+    }
 
     document.title = product.name + " - Balaji Ghanshyam Namkeen";
 

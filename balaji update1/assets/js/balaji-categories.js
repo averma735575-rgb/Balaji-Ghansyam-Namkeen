@@ -34,7 +34,7 @@
       });
     }
 
-    ["rs5", "rs10", "rs20"].forEach(function (variantId) {
+    ["rs5", "rs10", "rs20", "g170", "g350", "g500", "g1kg"].forEach(function (variantId) {
       var variantTab = document.getElementById(variantId);
       if (!variantTab) return;
 
@@ -42,7 +42,27 @@
         .querySelectorAll('a.project__card--link[href*="product-details.html"]')
         .forEach(function (link) {
           var url = new URL(link.href, window.location.href);
+          var productId = parseInt(url.searchParams.get("id"), 10);
+          var titleElement = link.querySelector(
+            ".project__card--content__title"
+          );
+          if (!titleElement) return;
+          var title = titleElement.textContent.trim();
+          var linkedProduct = getBalajiProductById(productId);
+          var matchingProduct = namkeenProducts.find(function (product) {
+            return product.name.trim().toLowerCase() === title.toLowerCase();
+          });
+
+          if (
+            matchingProduct &&
+            (!linkedProduct ||
+              linkedProduct.name.trim().toLowerCase() !== title.toLowerCase())
+          ) {
+            url.searchParams.set("id", matchingProduct.id);
+          }
+
           url.searchParams.set("variant", variantId);
+          url.searchParams.set("name", title);
           link.href = "product-details.html" + url.search + url.hash;
         });
     });
