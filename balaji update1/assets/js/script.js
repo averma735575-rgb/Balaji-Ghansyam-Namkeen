@@ -938,10 +938,8 @@ const newsletterPopup = function () {
       }, 3000);
     });
   }
-};
+ };
 newsletterPopup();
-
-
 // ============================================================
 // AUTO PRODUCT VARIANT LINKS
 // Automatically adds rs5 / rs10 / rs20 to product detail links
