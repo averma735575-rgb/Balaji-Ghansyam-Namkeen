@@ -474,6 +474,28 @@ function getBalajiProductById(id) {
   return null;
 }
 
+// Resolve the explicitly selected price-pack variant without changing the
+// product's existing image, name, descriptions, or other product details.
+function getBalajiProductVariantById(id, variantId) {
+  var product = getBalajiProductById(id);
+  var priceVariants = {
+    rs5: { price: 5, pack: "₹5 Pack" },
+    rs10: { price: 10, pack: "₹10 Pack" },
+    rs20: { price: 20, pack: "₹20 Pack" }
+  };
+  var variant = Object.prototype.hasOwnProperty.call(priceVariants, variantId)
+    ? priceVariants[variantId]
+    : null;
+
+  if (!product || !variant) return null;
+
+  return Object.assign({}, product, {
+    price: variant.price,
+    oldPrice: null,
+    pack: variant.pack
+  });
+}
+
 // Build the WhatsApp "Enquiry Now" link for a given product name
 function getWhatsAppEnquiryUrl(productName) {
   var message = "Hello, I am interested in " + productName + ". Please share more details and availability.";

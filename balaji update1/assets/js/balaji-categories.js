@@ -34,6 +34,19 @@
       });
     }
 
+    ["rs5", "rs10", "rs20"].forEach(function (variantId) {
+      var variantTab = document.getElementById(variantId);
+      if (!variantTab) return;
+
+      variantTab
+        .querySelectorAll('a.project__card--link[href*="product-details.html"]')
+        .forEach(function (link) {
+          var url = new URL(link.href, window.location.href);
+          url.searchParams.set("variant", variantId);
+          link.href = "product-details.html" + url.search + url.hash;
+        });
+    });
+
     var validTabs = ["all", "rs5", "rs10", "rs20", "g170", "g350", "g500", "g1kg"];
 
     function activateTab(id) {

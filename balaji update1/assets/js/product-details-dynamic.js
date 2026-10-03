@@ -10,6 +10,10 @@
     var params = new URLSearchParams(window.location.search);
     var id = parseInt(params.get("id"), 10);
     var product = getBalajiProductById(id) || namkeenProducts[0];
+    var variantId = params.get("variant");
+    if (variantId) {
+      product = getBalajiProductVariantById(id, variantId) || product;
+    }
     if (!product) return;
 
     document.title = product.name + " - Balaji Ghanshyam Namkeen";
@@ -50,7 +54,12 @@
       el.textContent = "₹" + product.price.toFixed(2);
     });
     document.querySelectorAll(".js-pd-oldprice").forEach(function (el) {
-      el.textContent = "₹" + product.oldPrice.toFixed(2);
+      if (product.oldPrice === null) {
+        el.style.display = "none";
+      } else {
+        el.style.display = "";
+        el.textContent = "₹" + product.oldPrice.toFixed(2);
+      }
     });
 
     // Descriptions
