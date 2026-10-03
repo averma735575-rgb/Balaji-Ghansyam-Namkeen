@@ -940,3 +940,91 @@ const newsletterPopup = function () {
   }
 };
 newsletterPopup();
+
+
+// ============================================================
+// AUTO PRODUCT VARIANT LINKS
+// Automatically adds rs5 / rs10 / rs20 to product detail links
+// based on the pack text shown on each product card.
+// ============================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".project__card--link").forEach(function (link) {
+
+    // Don't change links that already have a variant
+    if (link.href.includes("variant=")) {
+      return;
+    }
+
+    // Get product name and pack text
+    var nameElement = link.querySelector(
+      ".project__card--content__title"
+    );
+
+    var subtitleElement = link.querySelector(
+      ".project__card--content__subtitle"
+    );
+
+    if (!nameElement || !subtitleElement) {
+      return;
+    }
+
+    var productName = nameElement.textContent.trim();
+    var packText = subtitleElement.textContent.trim().toLowerCase();
+
+    var variantId = null;
+
+    // ₹5
+    if (
+      packText.includes("₹5") ||
+      packText.includes("rs 5") ||
+      packText.includes("rs5")
+    ) {
+      variantId = "rs5";
+    }
+
+    // ₹10
+    else if (
+      packText.includes("₹10") ||
+      packText.includes("rs 10") ||
+      packText.includes("rs10")
+    ) {
+      variantId = "rs10";
+    }
+
+    // ₹20
+    else if (
+      packText.includes("₹20") ||
+      packText.includes("rs 20") ||
+      packText.includes("rs20")
+    ) {
+      variantId = "rs20";
+    }
+
+    // Not a ₹5 / ₹10 / ₹20 pack
+    if (!variantId) {
+      return;
+    }
+
+    try {
+      var url = new URL(link.href, window.location.href);
+
+      var productId = url.searchParams.get("id");
+
+      if (!productId) {
+        return;
+      }
+
+      url.searchParams.set("variant", variantId);
+      url.searchParams.set("name", productName);
+
+      link.href = url.toString();
+
+    } catch (error) {
+      console.error(
+        "Could not update product variant link:",
+        error
+      );
+    }
+  });
+});
