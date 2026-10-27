@@ -462,6 +462,71 @@ var namkeenProducts = [
     category: "Namkeen",
     pack: "350 gm",
     badge: ""
+  },
+  {
+    id: 36,
+    name: "Hotking Mixture",
+    image: "assets/img/product/balaji/36.webp",
+    shortDescription: "A delicious and crispy blend of premium ingredients with authentic Indian spices.",
+    description: "A delicious and crispy blend of premium ingredients, Hotking Mixture is made fresh in the authentic Balaji Ghanshyam style. Perfect for tea-time, snacking and family moments.",
+    rating: 5.0,
+    price: 120,
+    oldPrice: 150,
+    category: "Namkeen",
+    pack: "500 gm",
+    badge: ""
+  },
+  {
+    id: 37,
+    name: "Roasted Hing Chana",
+    image: "assets/img/product/balaji/37.webp",
+    shortDescription: "A delicious and crispy blend of premium ingredients with authentic Indian spices.",
+    description: "A delicious and crispy blend of premium ingredients, Roasted Hing Chana is made fresh in the authentic Balaji Ghanshyam style. Perfect for tea-time, snacking and family moments.",
+    rating: 5.0,
+    price: 5,
+    oldPrice: null,
+    category: "Namkeen",
+    pack: "₹5 Pack",
+    badge: ""
+  },
+  {
+    id: 38,
+    name: "Matar",
+    image: "assets/img/product/balaji/38.webp",
+    shortDescription: "A delicious and crispy blend of premium ingredients with authentic Indian spices.",
+    description: "A delicious and crispy blend of premium ingredients, Matar is made fresh in the authentic Balaji Ghanshyam style. Perfect for tea-time, snacking and family moments.",
+    rating: 5.0,
+    price: 5,
+    oldPrice: null,
+    category: "Namkeen",
+    pack: "₹5 Pack",
+    badge: ""
+  },
+  {
+    id: 39,
+    name: "Salted Peanut",
+    image: "assets/img/product/balaji/39.webp",
+    shortDescription: "A delicious and crispy blend of premium ingredients with authentic Indian spices.",
+    description: "A delicious and crispy blend of premium ingredients, Salted Peanut is made fresh in the authentic Balaji Ghanshyam style. Perfect for tea-time, snacking and family moments.",
+    rating: 5.0,
+    price: 5,
+    oldPrice: null,
+    category: "Namkeen",
+    pack: "₹5 Pack",
+    badge: ""
+  },
+  {
+    id: 40,
+    name: "Punjabi Tadka",
+    image: "assets/img/product/balaji/40.webp",
+    shortDescription: "A delicious and crispy blend of premium ingredients with authentic Indian spices.",
+    description: "A delicious and crispy blend of premium ingredients, Punjabi Tadka is made fresh in the authentic Balaji Ghanshyam style. Perfect for tea-time, snacking and family moments.",
+    rating: 5.0,
+    price: 5,
+    oldPrice: null,
+    category: "Namkeen",
+    pack: "₹5 Pack",
+    badge: ""
   }
 ];
 

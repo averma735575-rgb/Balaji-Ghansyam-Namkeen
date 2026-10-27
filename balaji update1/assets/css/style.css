@@ -1637,10 +1637,12 @@ hr {
 }
 
 .swiper__nav--btn::after {
-    background: url(../img/icon/left-arrow-angle.webp);
     width: 9px;
-    height: 17px;
+    height: 9px;
     font-size: 0;
+    border-top: 2px solid var(--white-color);
+    border-right: 2px solid var(--white-color);
+    transform: rotate(-135deg);
 }
 
 .swiper__nav--btn.swiper-button-prev {
@@ -1652,7 +1654,7 @@ hr {
 }
 
 .swiper__nav--btn.swiper-button-next::after {
-    background: url(../img/icon/right-arrow-angle.webp);
+    transform: rotate(45deg);
 }
 
 .swiper__nav--btn.style2 {
